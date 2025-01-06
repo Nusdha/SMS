@@ -11,6 +11,7 @@ public interface StudentService {
     Student getStudentById(String id);
     Student updateStudent(Student student,String id);
     void deleteStudent(String id);
+
     List<Student> getStudentByYearOfEnrollment(Integer year);
     String getDepartmentById(String id);
     void removeStudentByYearOfEntrollment(Integer year);

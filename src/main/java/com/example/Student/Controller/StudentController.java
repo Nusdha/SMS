@@ -18,7 +18,6 @@ import com.example.Student.Service.StudentService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-
 @RestController
 @RequestMapping("/api/Student")
 public class StudentController {
@@ -58,4 +57,18 @@ public class StudentController {
         return new ResponseEntity<>("Student deleted successfully", HttpStatus.OK);
     }
 
+    @GetMapping("/year/{year}")
+    public List<Student> getStudentByYearOfEnrollment(@PathVariable Integer year) {
+        return studentService.getStudentByYearOfEnrollment(year);
+    }
+
+    @GetMapping("/{id}/department")
+    public String getDepartmentById(@PathVariable String id) {
+        return studentService.getDepartmentById(id);
+    }
+    
+    @DeleteMapping("/year/{year}")
+    public void removeStudentByYearOfEntrollment(@PathVariable Integer year) {
+        studentService.removeStudentByYearOfEntrollment(year);
+    }
 }

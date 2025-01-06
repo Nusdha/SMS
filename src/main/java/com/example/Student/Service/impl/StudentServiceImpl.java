@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.Student.Model.Student;
 import com.example.Student.Repository.StudentRepository;
 import com.example.Student.Service.StudentService;
@@ -44,6 +46,24 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void deleteStudent (String id) {
         studentRepository.deleteById(id);
+    }
+
+
+    @Override
+    public List<Student> getStudentByYearOfEnrollment(Integer yearOfEntrollment) {
+        return studentRepository.findByYearOfEnrollment(yearOfEntrollment);
+    }
+
+
+    @Override
+    public String getDepartmentById(String id) {
+        return studentRepository.findDepartmentById(id);
+    }
+
+    @Transactional
+    @Override
+    public void removeStudentByYearOfEntrollment(Integer yearOfEnrollment) {
+        studentRepository.deleteByYearOfEnrollment(yearOfEnrollment);
     }
 
 }
